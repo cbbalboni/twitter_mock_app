@@ -1,0 +1,12 @@
+<div class="app">
+  <div class="timeline">
+    <app-header></app-header>
+    <div class="tweet divide-y divide-dashed divide-gray-300">
+      <ng-container *ngIf="user$ | async as user">
+        <app-new-tweet [user]="user" (newTweet)="addNewZeet($event)"></app-new-tweet>
+      </ng-container>
+      <app-tweet (tweetLiked)="onTweetLike($event)" (tweetCommented)="onTweetComment($event)" *ngFor="let zeet of tweets;" [tweet]="zeet"></app-tweet>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
